@@ -1,18 +1,146 @@
-<h1> Search for recipes </h1>
-
-<hr>
-<form action="" method="POST">
-   {% csrf_token %}
-   {{form}}
-   <button type="submit" >search</button>
-</form>
-
-<br>
-
-{% if recipes_df %}
-   {{recipes_df|safe}}
-   <br>
-   <img src="data:image/png;base64, {{chart|safe}}">
-{% else %}
-   <h3> no data</h3>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../static/recipes/images/faviconrecipes.svg">
+        <div class="navbar">
+            <a href="{%url 'recipes:list' %}" class="navbutton"> Home </a>
+            <a href="{%url 'recipes:stories' %}" class="navbutton"> Stories </a>
+            <a href ="{%url 'logout' %}" class="navbutton"> Logout </a>
+        </div>
+        <h1> Search for recipes </h1>
+        <style>
+            .home-container{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+    
+            .recipe-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding: 23px 0 23px 23px;
+                grid-gap: 23px;
+                background: #b4d3b2;
+                width: 70vw;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
+    
+            .card {
+                background-color: rgba(255, 255, 255, 0.5);
+                border: 1px solid black;
+                border-radius: 7px;
+                width: 40vh;
+                padding: 0 0 15px 15px;
+            }
+    
+            .card-img {
+                height: 60%;
+                width: 70%;
+                object-fit: cover;
+                border-radius: 20px;
+                padding-top: 10px;
+            }
+    
+            .details-section {
+                display: flex;
+                place-content: center;
+                justify-items: center;
+                height: 100%;
+                width: 100%;
+            }
+    
+            .details-card {
+                box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+                border-radius: 10px;
+                backdrop-filter: blur(40px);
+                background-color: #b4d3b2;
+                text-align: center;
+                height: 100%;
+                width: 70%;
+                margin: 20px;
+                padding-top: 20px;
+            }
+    
+            .details-card-img {
+                border-radius: 15px;
+                height: 40%;
+                width: 60%;
+            }
+    
+            .details-container{
+                text-align: left;
+                margin: 20px;   
+            }
+    
+            .container {
+                margin-top: 50px; 
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 800px; 
+                padding: 0 15px;
+                background-color: #b4d3b2;
+                border-radius: 20px;
+            }
+    
+            h1 {
+                color: red;
+            }
+    
+            p {
+                color: #666;
+            }
+    
+            form {
+                display: inline-block; 
+                margin-bottom: 15px; 
+            }
+    
+            .navbar {
+                width: 80vw;
+                height: 10vh;
+                margin: 0 auto;
+                margin-bottom: 30px;
+                border-radius: 20px;
+                background-color: #b4d3b2;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+    
+            .navbutton {
+                width: 50px;
+                font-size: 16px;
+                background-color: red;
+                border-radius: 5px;
+                border: 0px;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <hr>
+        <form action="" method="POST">
+           {% csrf_token %}
+           {{form}}
+           <button type="submit" >search</button>
+        </form>
+        
+        <br>
+        
+        {% if recipes_df %}
+           {{recipes_df|safe}}
+           <br>
+           <img src="data:image/png;base64, {{chart|safe}}">
+        {% else %}
+           <h3> no data</h3>
+        {% endif %} 
+    </body>
+</html>

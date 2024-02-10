@@ -2,8 +2,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body>
-    <h1>you've been logged out</h1>
-</body>
+    <head>
+        <title>Logout</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../../recipes/static/recipes/images/faviconrecipes.svg">
+        <style>
+            .navbutton {
+                width: 50px;
+                font-size: 16px;
+                background-color: red;
+                border-radius: 5px;
+                border: 0px;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                text-align: center;
+            }
+            .auth_modal {
+                width: 25%;
+                background-color: #b4d3b2;
+                border-radius: 10px;
+                padding: 25px;
+                box-shadow: 5px 10px 15px;
+                margin: 0 auto;
+                margin-top: 23vh;
+            }           
+        </style>
+    </head>
+
+    <body>
+        <div class="auth_modal">
+            <h2 style="padding: 10px; 
+                   color: rgb(14, 59, 14);
+                   text-align: center;">Successfully Logged Out!</h2>
+            <a href ="{%url 'login' %}" class="navbutton"> Login </a>
+        </div>
+    </body>
 
 </html>

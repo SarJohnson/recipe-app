@@ -1,16 +1,128 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/recipes/css/styles.css">
-    <title>Recipes' List</title>
-    <a href ="{%url 'login' %}"> Login </a>
+    <link rel="shortcut icon" href="../../static/recipes/images/faviconrecipes.svg">
+    <title>Make 'Em Eat</title>
+    <style>
+        .home-container{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .recipe-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 23px 0 23px 23px;
+            grid-gap: 23px;
+            background: #b4d3b2;
+            width: 70vw;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid black;
+            border-radius: 7px;
+            width: 40vh;
+            padding: 0 0 15px 15px;
+        }
+
+        .card-img {
+            height: 60%;
+            width: 70%;
+            object-fit: cover;
+            border-radius: 20px;
+            padding-top: 10px;
+        }
+
+        .details-section {
+            display: flex;
+            place-content: center;
+            justify-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .details-card {
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.3);
+            border-radius: 10px;
+            backdrop-filter: blur(40px);
+            background-color: #b4d3b2;
+            text-align: center;
+            height: 100%;
+            width: 70%;
+            margin: 20px;
+            padding-top: 20px;
+        }
+
+        .details-card-img {
+            border-radius: 15px;
+            height: 40%;
+            width: 60%;
+        }
+
+        .details-container{
+            text-align: left;
+            margin: 20px;   
+        }
+
+        .container {
+            margin-top: 50px; 
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px; 
+            padding: 0 15px;
+            background-color: #b4d3b2;
+            border-radius: 20px;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        p {
+            color: #666;
+        }
+
+        form {
+            display: inline-block; 
+            margin-bottom: 15px; 
+        }
+
+        .navbar {
+            width: 80vw;
+            height: 10vh;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            background-color: #b4d3b2;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .navbutton {
+            width: 50px;
+            font-size: 16px;
+            background-color: red;
+            border-radius: 5px;
+            border: 0px;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
    </head>
-   <body>
-       <h1 style="text-align: center">Welcome to my Recipe App</h1>
-       <br>
-       <center><img src="../../static/recipes/images/recipes.jpg" alt="home" width="600" height="400"></center>
+   <body style="margin-top: 20px;">
+       <center><img src="../../static/recipes/images/recipeshome.jpg" width="300" height="400"></center>
+       <h1 style="text-align: center">Make 'Em Eat. The Rose Tursi Recipe App</h1>
+       <a href ="{%url 'login' %}" class="navbutton" style="position: absolute; left: 50%; margin-bottom: 20px;"> Login </a>
    </body>
 </html>

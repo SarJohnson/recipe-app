@@ -18,6 +18,9 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
 def home(request):
     return render(request, 'recipes/home.html')
 
+def stories(request):
+    return render(request, 'recipes/stories.html')
+
 def records(request):
     form = RecipeSearchForm(request.POST or None)
     recipes_df = None

@@ -1,18 +1,68 @@
-<h1>Login</h1>          {% comment %} print heading {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% comment %} check for error message {% endcomment %}
-{% if error_message %}
-   {{error_message}}
-{% endif %}
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../../recipes/static/recipes/images/faviconrecipes.svg">
+  <style>
+      .navbutton {
+         width: 50px;
+         font-size: 16px;
+         background-color: red;
+         border-radius: 5px;
+         border: 0px;
+         color: white;
+         text-decoration: none;
+         padding: 10px;
+         text-align: center;
+      }
+      .auth_modal {
+         width: 25%;
+         background-color: #b4d3b2;
+         border-radius: 10px;
+         padding: 25px;
+         box-shadow: 5px 10px 15px;
+         margin: 0 auto;
+         margin-top: 23vh;
+      }
+      .form_input {
+         width: 80%;
+         display: flex;
+         flex-direction: column;
+         margin-bottom: 20px;
+      }    
+   </style>
+</head>
 
-{% comment %} print form {% endcomment %}
-<form action="" method="POST" >
-   {% comment %} add Django security token {% endcomment %}
-   {% csrf_token %}   
+<body>
+  <div class="auth_modal">
+    <h1 style="color: red;">Login</h1> {% comment %} print heading {% endcomment %}
 
-   {% comment %} print form received from view  {% endcomment %}
-   {{form}}           
+    {% comment %} check for error message {% endcomment %}
+    {% if error_message %}
+    <div id="error_login">
+      {{error_message}}
+    </div>
+    {% endif %}
 
-   {% comment %} add button {% endcomment %}
-   <button type="submit" >Login</button>
-</form>
+    {% comment %} print form {% endcomment %}
+    <form action="" method="POST">
+      {% comment %} add Django security token {% endcomment %}
+      {% csrf_token %}
+
+      {% comment %} print form received from view {% endcomment %}
+      <div class="form_input">
+        {{form}}
+      </div>
+
+      {% comment %} add button {% endcomment %}
+      <br>
+      <br>
+      <button type="submit" class="navbutton">Login</button>
+    </form>
+  </div>
+</body>
+
+</html>
