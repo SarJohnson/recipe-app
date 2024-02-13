@@ -1,9 +1,10 @@
 from django.test import TestCase
 from .models import Recipe
+from .forms import RecipeSearchForm
 
 class RecipeModelTest(TestCase):
     def setUpTestData():
-        Recipe.objects.create(name='tea', cooking_time=5, ingredients='water, sugar, leaves', description='boil water, then add tea leaves, finally add sugar to taste')
+        Recipe.objects.create(name='Tea', ingredients='Tea leaves, Water, Sugar', cooking_time=10, description='test description')
     def test_recipe_name(self):
         recipe = Recipe.objects.get(id=1)
         field_label = recipe._meta.get_field('name').verbose_name
