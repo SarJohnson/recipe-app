@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipes',
     'users',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,16 @@ DATABASES = {
     }
 }
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+          
+cloudinary.config( 
+    cloud_name = "dtskolkdw", 
+    api_key = "417844945526884", 
+    api_secret = "i2sKnCaOUx_WjUKYhEwEAtG4sQI",
+    secure= True,
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -125,7 +136,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'recipes')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL='/login/'
 
 # Default primary key field type

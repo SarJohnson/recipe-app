@@ -1,12 +1,13 @@
 from django.db import models
 from django.shortcuts import reverse
+from cloudinary.models import CloudinaryField
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 120)
     cooking_time = models.IntegerField(help_text = 'in minutes', default = 0)
     ingredients = models.CharField(max_length = 500)
     description = models.TextField()
-    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
+    pic = CloudinaryField('media', null=True, blank=True)
 
     def calc_difficulty(self):
         ingredients = self.ingredients.split(', ')
