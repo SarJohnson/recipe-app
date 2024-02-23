@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipes',
     'users',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -85,17 +84,6 @@ DATABASES = {
     }
 }
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-          
-cloudinary.config( 
-    cloud_name = "dtskolkdw", 
-    api_key = "417844945526884", 
-    api_secret = "i2sKnCaOUx_WjUKYhEwEAtG4sQI",
-    secure= True,
-)
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -135,8 +123,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'recipes' / 'static'
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = f'https://python-recipeapp.s3.amazonaws.com/'
 LOGIN_URL='/login/'
 
 # Default primary key field type
@@ -147,3 +134,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+AWS_ACCESS_KEY_ID = 'AKIAY22ECWJWTJOOI7NR'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'python-recipeapp'
+AWS_S3_CUSTOM_DOMAIN = f'python-recipeapp.s3.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'media'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_FILE_OVERWRITE = False
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
